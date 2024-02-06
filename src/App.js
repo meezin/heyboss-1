@@ -3,7 +3,6 @@ import './App.css';
 import Carousel from "./components/carousel.component";
 import slidesData from './db.json'; 
 
-/** */
 
 function App() {
 

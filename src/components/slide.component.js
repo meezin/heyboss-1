@@ -1,4 +1,11 @@
-export default function Slide({ slide }) {
+export default function Slide({ slide, navigateToSlide }) {
+
+    // Define a click handler for your links
+    const handleLinkClick = (slideName,e) => {
+        e.preventDefault();
+        navigateToSlide(slideName);
+        };
+
     return (
         <div className="flex flex-col md:flex-row">
             {/* Right Column for Image */}
@@ -14,9 +21,9 @@ export default function Slide({ slide }) {
                 <div className="space-y-4">
                     {/* Navigation/Links */}
                     <div className="flex space-x-4 font-semibold">
-                        <a href="/maguy-le-coze" className="hover:text-gray-600">MAGUY LE COZE</a>
-                        <a href="/eric-ripert" className="hover:text-gray-600">ERIC RIPERT</a>
-                        <a href="/team" className="hover:text-gray-600">TEAM</a>
+                        <a href="/about/maguy-le-coze" onClick={(e) => handleLinkClick('Maguy Le Coze', e)} className="hover:text-gray-600">MAGUY LE COZE</a>
+                        <a href="/about/eric-ripert" onClick={(e) => handleLinkClick('Eric Ripert', e)} className="hover:text-gray-600">ERIC RIPERT</a>
+                        <a href="/about/team" className="hover:text-gray-600">TEAM</a>
                     </div>
                     {/* Quote */}
                     <blockquote className="italic">

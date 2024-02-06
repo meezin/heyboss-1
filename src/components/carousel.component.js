@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom' ;
 import Slide from './slide.component'
 
 export default function Carousel({ slides }) {
-    let [current, setCurrent] = useState(0);
+    const [current, setCurrent] = useState(0);
+    const navigate = useNavigate();
 
     useEffect(() => {
       const handleScroll = (event) => {
@@ -22,14 +24,28 @@ export default function Carousel({ slides }) {
     }, [current]); // Dependencies array has 'current' to ensure we have the latest slide index
   
   
-    let previousSlide = () => {
-      if (current === 0) setCurrent(slides.length - 1);
-      else setCurrent(current - 1);
+    const previousSlide = () => {
+      let newCurrent = current === 0 ? slides.length - 1 : current - 1;
+      setCurrent(newCurrent);
+      // Update the URL
+      navigate(slides[newCurrent].destination);
     };
   
-    let nextSlide = () => {
-      if (current === slides.length - 1) setCurrent(0);
-      else setCurrent(current + 1);
+    const nextSlide = () => {
+      let newCurrent = current === slides.length - 1 ? 0 : current + 1;
+      setCurrent(newCurrent);
+      // Update the URL
+      navigate(slides[newCurrent].destination);
+    };
+
+    const navigateToSlide = (slideName) => {
+      const slideIndex = slides.findIndex(slide => slide.name === slideName);
+      console.log("slide.name, slideName", slideName)
+      if (slideIndex >= 0) {
+        setCurrent(slideIndex);
+        // Optional: Update the URL if each slide corresponds to a different route
+        navigate(slides[slideIndex].destination);
+      }
     };
   
     return (
@@ -43,7 +59,7 @@ export default function Carousel({ slides }) {
       >
         {slides.map((slide, index) => (
           <div key={slide.id} className="w-full h-full" style={{ width: '100%' }}>
-            <Slide slide={slide} />
+            <Slide slide={slide} navigateToSlide={navigateToSlide}/>
           </div>
         ))}
       </div> 
