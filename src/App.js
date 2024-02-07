@@ -1,17 +1,36 @@
-//import logo from './logo.svg';
-import './App.css';
-import Carousel from "./components/carousel.component";
-import slidesData from './db.json'; 
+import React, { useEffect, useRef, useState } from "react";
+import "./App.css";
 
+import Banner from './components/Banner'; 
+import About from './components/About'; 
+import Menu from './components/Menu'; 
+
+const SnapParent = React.forwardRef(({ ...props }, ref) => (
+  <div ref={ref} {...props} className="snap-parent-y-mandatory">
+    {props.children}
+  </div>
+));
+
+const Container = ({ children }) => {
+  const ref = useRef();
+
+  return (
+
+      <SnapParent ref={ref}>
+        {children}
+      </SnapParent>
+  );
+};
 
 function App() {
 
-  const slides = slidesData.slides
-
   return (
-    <div className="m-auto">
-      <Carousel slides={slides} />
-  </div>
+    <div id="views" style={{height: '100vh', overflow: 'auto'}}>
+      <Container>
+        <Banner/>
+        <About/>
+      </Container>
+    </div>
   );
 }
 
