@@ -1,40 +1,55 @@
-export default function Slide({ slide}) {
+import { useState } from 'react';
+import AboutData from '../../aboutdb.json'; 
 
-    // Define a click handler for your links
-    // const handleLinkClick = (slideName,e) => {
-    //     e.preventDefault();
-    //     navigateToSlide(slideName);
-    //     };
+export default function Slide({ slide, onNavClick }) {
+  // State to track active navigation item
+  const [activeNav, setActiveNav] = useState('');
+  const navItems = AboutData.navItems;
 
-    return (
-        <div className="w-full pl-34 pr-4 pt-8 pb-14 md:pl-32 md:pr-20 pt-[150px]">
-            {/* Right Column for Image */}
-            <div className="md:w-1/2 md:order-2">
-                <div className="bg-cover bg-no-repeat bg-center h-48 w-full md:h-full"
-                     style={{ backgroundImage: `url('${slide.img_url}')` }}
-                     aria-label={slide.name}>
-                    {/* Empty div for background image; Adjust size as needed */}
-                </div>
-            </div>
-            {/* Left Column for Text */}
-            <div className="md:w-1/2 md:order-1 p-8">
-                <div className="space-y-4">
-                    {/* Navigation/Links */}
-                    <div className="flex space-x-4 font-semibold">
-                        <button className="hover:text-gray-600">MAGUY LE COZE</button>
-                        <button className="hover:text-gray-600">ERIC RIPERT</button>
-                        <button className="hover:text-gray-600">TEAM</button>
-                    </div>
-                    {/* Quote */}
-                    <blockquote className="italic">
-                        {slide.quote}
-                    </blockquote>
-                    {/* Biography Text */}
-                    <p className="text-sm">
-                        {slide.bio}
-                    </p>
-                </div>
-            </div>
+  
+  // Handle navigation click
+  const handleNavClick = (id) => {
+    setActiveNav(slide.name);
+    onNavClick(id);
+  };
+
+  return (
+    <div className="w-full h-full flex flex-col md:flex-row">
+      {/* Right Column for Image */}
+      <div className="md:w-1/2 md:order-2">
+        <div
+          className="image bg-cover bg-no-repeat bg-center w-full h-screen"
+          style={{ backgroundImage: `url('${slide.img_url}')` }}
+          aria-label={slide.name}
+        ></div>
+      </div>
+      {/* Left Column for Text */}
+      <div className="md:w-1/2 md:order-1 p-8">
+        <div className="space-y-4">
+          {/* Navigation */}
+          <nav>
+          <ul className="flex space-x-4 font-semibold">
+              {navItems.map(item => (
+                <li
+                  key={item.id}
+                  className={`hover:text-gray-600 ${activeNav === item.name ? 'border-b-2' : ''}`}
+                  onClick={() => handleNavClick(item.id)}
+                >
+                  {item.name}
+                </li>
+              ))}
+            </ul>
+          </nav>
+          {/* Quote */}
+          <blockquote className="italic">
+            {slide.quote}
+          </blockquote>
+          {/* Biography Text */}
+          <p className="text-sm">
+            {slide.bio}
+          </p>
         </div>
-    );
+      </div>
+    </div>
+  );
 }

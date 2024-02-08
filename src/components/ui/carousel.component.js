@@ -38,17 +38,16 @@ export default function Carousel({ slides }) {
       navigate(slides[newCurrent].destination);
     };
 
-    // const navigateToSlide = (slideName) => {
-    //   const slideIndex = slides.findIndex(slide => slide.name === slideName);
-    //   console.log("slide.name, slideName", slideName)
-    //   if (slideIndex >= 0) {
-    //     setCurrent(slideIndex);
-    //     navigate(slides[slideIndex].destination);
-    //   }
-    // };
+    const navigateToSlide = (id) => {
+      const slideIndex = slides.findIndex(slide => slide.id === id);
+      if (slideIndex !== -1) {
+          setCurrent(slideIndex);
+          navigate(slides[slideIndex].destination);
+      }
+  };
   
     return (
-    <div className="overflow-hidden relative top-0 left-0 w-full h-screen">
+    <div className="top-0 left-0 w-full h-ull overflow-hidden">
       <div
         className="flex transition ease-out duration-400"
         style={{
@@ -58,7 +57,7 @@ export default function Carousel({ slides }) {
       >
         {slides.map((slide, index) => (
           <div key={slide.id} className="w-full h-full" style={{ width: '100%' }}>
-            <Slide slide={slide}/>
+            <Slide slide={slide} onNavClick={{navigateToSlide}}/>
           </div>
         ))}
       </div> 

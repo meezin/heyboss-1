@@ -4,19 +4,7 @@
   height: 100vh;
   width: 100%;
   -webkit-overflow-scrolling: touch;
-}
-
-header {
-  position: fixed;
-  height: 10vh;
-}
-
-.snap-parent-y-proximity {
-  scroll-snap-type: y proximity;
-  overflow: scroll;
-  height: 100vh;
-  width: 100%;
-  -webkit-overflow-scrolling: touch;
+  
 }
 
 .snap-child-start {
@@ -24,3 +12,5 @@ header {
   scroll-snap-align: start;
   flex: none;
 }
+
+

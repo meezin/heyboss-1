@@ -3,7 +3,7 @@ import "./App.css";
 
 import Banner from './components/Banner'; 
 import About from './components/About'; 
-import Menu from './components/Menu'; 
+import Cta from './components/Cta'; 
 
 const SnapParent = React.forwardRef(({ ...props }, ref) => (
   <div ref={ref} {...props} className="snap-parent-y-mandatory">
@@ -29,6 +29,7 @@ function App() {
       <Container>
         <Banner/>
         <About/>
+        <Cta/>
       </Container>
     </div>
   );
