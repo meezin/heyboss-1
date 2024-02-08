@@ -4,7 +4,6 @@
   height: 100vh;
   width: 100%;
   -webkit-overflow-scrolling: touch;
-  
 }
 
 .snap-child-start {
@@ -13,4 +12,58 @@
   flex: none;
 }
 
+.swiper-container {
+  width: 100%;
+  max-width: 940px;
+  height: 500px;
+  margin: 0 auto;
+}
+
+/* 슬라이드가 들어올 때 애니메이션 */
+.slide-next-enter, .slide-prev-enter {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.slide-next-enter-active {
+  animation: slideInFromBottom 300ms ease-in-out forwards;
+}
+
+.slide-prev-enter-active {
+  animation: slideInFromTop 300ms ease-in-out forwards;
+}
+
+/* 슬라이드가 나갈 때 애니메이션 */
+.slide-next-exit {
+  animation: slideOutToTop 300ms ease-in-out forwards;
+}
+
+.slide-prev-exit {
+  animation: slideOutToBottom 300ms ease-in-out forwards;
+}
+
+/* 슬라이드가 들어오는 방향 애니메이션 */
+@keyframes slideInFromBottom {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+@keyframes slideInFromTop {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(0); }
+}
+
+/* 슬라이드가 나가는 방향 애니메이션 */
+@keyframes slideOutToTop {
+  from { transform: translateY(0); }
+  to { transform: translateY(-100%); }
+}
+
+@keyframes slideOutToBottom {
+  from { transform: translateY(0); }
+  to { transform: translateY(100%); }
+}
 

@@ -5,27 +5,28 @@ import Banner from './components/Banner';
 import About from './components/About'; 
 import Cta from './components/Cta'; 
 
-const SnapParent = React.forwardRef(({ ...props }, ref) => (
-  <div ref={ref} {...props} className="snap-parent-y-mandatory">
-    {props.children}
-  </div>
-));
+// const SnapParent = React.forwardRef(({ ...props }, ref) => (
+//   <div ref={ref} {...props} className="snap-parent-y-mandatory">
+//     {props.children}
+//   </div>
+// ));
 
 const Container = ({ children }) => {
-  const ref = useRef();
+  // const ref = useRef();
 
-  return (
+  // return (
 
-      <SnapParent ref={ref}>
-        {children}
-      </SnapParent>
-  );
+  //     <SnapParent ref={ref}>
+  //       {children}
+  //     </SnapParent>
+  // );
 };
 
 function App() {
 
   return (
     <div id="views" style={{height: '100vh', overflow: 'auto'}}>
+      <About/>
       <Container>
         <Banner/>
         <About/>
