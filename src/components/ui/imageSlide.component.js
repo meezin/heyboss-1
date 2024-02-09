@@ -1,40 +1,16 @@
-import { useState, useEffect, useRef, cloneElement } from 'react';
+import { useState, useEffect, useRef, cloneElement, Children } from 'react';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
 import 'swiper/css';
+import 'swiper/css/pagination';
 
-export default function ImageSlide({ slideId }) {
+// import required modules
+import { Mousewheel, Pagination } from 'swiper/modules';
 
-  const [index, setIndex] = useState(0);
-  const [direction, setDirection] = useState('next'); // 'next' 또는 'prev'
+export default function ImageSlide({ slideId, images }) {<></>
 
-  const sliderOptions = {
-    direction: 'vertical',
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      direction:"vertical",
-      slidesPerview : 1,
-      mousewheelControl: true,
-  };
-
-
-
-  useEffect(() => {
-    new Swiper('.swiper-container', {
-      direction: 'vertical',
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      direction:"vertical",
-      slidesPerview : 1,
-      mousewheelControl: true,
-    });
-  }, []);
 
   // // 현재 슬라이드 ID와 일치하는 이미지(들)을 찾음
   // const matchingImages = images.find(image => image.id === slideId);
@@ -74,6 +50,14 @@ export default function ImageSlide({ slideId }) {
   //   {
   //     id: "1",
   //     img_url : "/img/team/lb-eric-001.jpg"
+  //   },
+  //   {
+  //     id:"2",
+  //     img_url:"",
+  //     subtab: [
+  //       {img_url: "/img/team/lb-maguy.jpg"},
+  //       {img_url: "/img/team/lb-maguy.jpg"}     
+  //     ]
   //   }
   // ]
 
@@ -97,7 +81,7 @@ export default function ImageSlide({ slideId }) {
   //     classNames: direction,
   //   });
 
-  return (
+  return (<></>
     // images.length > 0 && (
     //   <div className="image-slider">
     //     <button onClick={slideUp}>{"<"}</button>
@@ -115,14 +99,56 @@ export default function ImageSlide({ slideId }) {
     //     <button onClick={slideDown}>{">"}</button>
     //   </div>
     // )
-    <Swiper
-    {...sliderOptions}
-    >
-      <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="/img/team/lb-maguy.jpg" alt=""/></div>
-        <div class="swiper-slide"><img src="/img/team/lb-eric-001.jpg" alt=""/></div>
-      </div>
-    </Swiper>
+      // <Swiper
+      //   className="mySwiper swiper-h"
+      //   direction={'vertical'}
+      //   pagination={{
+      //     clickable: true,
+      //   }}
+      //   mousewheel={true}
+      //   slidesPerView={1}
+      //   modules={[Mousewheel,Pagination]}
+      // >
+      //   {images.map((slide,index) =>  (
+      //   <SwiperSlide key={index}>  
+      //        <div
+      //          className="image bg-cover bg-no-repeat bg-center w-full h-screen ease-out duration-300 hover:scale-105 hover:ease-in"
+      //          style={{ backgroundImage: `url('${slide.img_url}')` }}
+      //        ></div></SwiperSlide>
+      //   ))}
+      // </Swiper>
+    //   <Swiper
+    //   className="mySwiper swiper-h"
+    //   spaceBetween={50}
+    //   direction={'vertical'}
+    //   pagination={{
+    //     clickable: true,
+    //   }}
+    //   mousewheel={true}
+    //   slidesPerView={1}
+    //   modules={[Mousewheel,Pagination]}
+    // >
+    //   <SwiperSlide>Horizontal Slide 1</SwiperSlide>
+    //   <SwiperSlide>Horizontal Slide 2</SwiperSlide>
+    //   <SwiperSlide>
+    //     <Swiper
+    //       className="mySwiper2 swiper-v"
+    //       pagination={{
+    //         clickable: true,
+    //       }}
+    //       mousewheel={true}
+    //       slidesPerView={1}
+    //       modules={[Mousewheel,Pagination]}
+    //     >
+    //       <SwiperSlide>Vertical Slide 1</SwiperSlide>
+    //       <SwiperSlide>Vertical Slide 2</SwiperSlide>
+    //       <SwiperSlide>Vertical Slide 3</SwiperSlide>
+    //       <SwiperSlide>Vertical Slide 4</SwiperSlide>
+    //       <SwiperSlide>Vertical Slide 5</SwiperSlide>
+    //     </Swiper>
+    //   </SwiperSlide>
+    //   <SwiperSlide>Horizontal Slide 3</SwiperSlide>
+    //   <SwiperSlide>Horizontal Slide 4</SwiperSlide>
+    // </Swiper>
   );
-  <script></script>
 }

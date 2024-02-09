@@ -6,7 +6,7 @@ function About() {
     const slides = AboutData.slides
     
     return ( 
-    <div className="top-0 left-0 w-full h-screen">
+    <div className="snap-child-start w-full h-screen overflow-hidden">
         <Carousel slides={slides} />
     </div> );
 }
