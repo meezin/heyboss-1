@@ -2,7 +2,11 @@
 module.exports = {
   content: ["./src/**/*.{html,js}"],
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        sm: '480px',
+      },
+    },
   },
   // plugins: [
   //   require('taos/plugin')

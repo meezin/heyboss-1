@@ -19,29 +19,14 @@
       },
       {
         "id": "2",
-        "name" : "team",
-        "img_url" : "/img/team/slides/aldo-sohm.jpg",
-        "subtab" :[
+        "name" : "About",
+        "subNav" :[
           {
             "id":"3",
-            "name" : "ALDO SOHM",
-            "quote" : "Wine Director",
+            "name" : "Team",
+            "quote" : "Thank you",
             "bio":"test 1 ",
-            "img_url":"/img/team/slides/aldo-sohm.jpg"
-          },
-          {
-            "id":"4",
-            "name" : "ERIC GESTEL",
-            "quote" : "Executive Chef",
-            "bio":"test 2  ",
-            "img_url":"/img/team/slides/eric-gestel.jpg"
-          },
-          {
-            "id":"5",
-            "name" : "ANTHONY GRAY",
-            "quote" : "Chef de Cuisine",
-            "bio":"test 3  ",
-            "img_url":"/img/team/slides/eric-gestel.jpg"
+            "img_url": ["/img/team/slides/aldo-sohm.jpg","img/team/slides/eric-gestel.jpg"]
           }
         ]
       }
@@ -59,19 +44,11 @@
     },
     {
       "id": "2",
-      "name": "Team",
-      "subtab": [
+      "name": "About",
+      "subNav": [
         {
           "id":"3",
-          "name": "ALDO SOHM"
-        },
-        {
-          "id":"4",
-          "name": "ERIC GESTEL"
-        },
-        {
-          "id":"5",
-          "name": "ANTHONY GRAY"
+          "name": "Team"
         }
       ]
     }
